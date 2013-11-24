@@ -1,158 +1,96 @@
-/*
- * Name:			Tooltip
- * Description:		Defines styles for tooltips
- *
- * Component: 		`tooltip`
- *
- * Modifiers		`tooltip-top`
- *					`tooltip-top-left`
- *					`tooltip-top-right`
- *					`tooltip-bottom`
- *					`tooltip-bottom-left`
- *					`tooltip-bottom-right`
- *					`tooltip-left`
- *					`tooltip-right`
- *
- ========================================================================== */
+//
+// Tooltips
+// --------------------------------------------------
 
 
-/* Component
- ========================================================================== */
-
-/*
- * 1. Hide by default
- * 2. Set fixed position
- * 3. Set dimensions
- * 4. Set style
- */
-
+// Base class
 .tooltip {
-	/* 1 */
-	display: none;
-	/* 2 */
-	position: absolute;
-	z-index: @tooltip-z-index;
-	/* 3 */
-	-moz-box-sizing: border-box;
-	box-sizing: border-box; 
-	max-width: @tooltip-max-width;
-	padding: @tooltip-padding;
-	/* 4 */
-	background: @tooltip-background;
-	color: @tooltip-color;
-	font-size: @tooltip-font-size;
-	line-height: @tooltip-line-height;
-	text-align: center;
-	.hook-tooltip;
+  position: absolute;
+  z-index: @zindex-tooltip;
+  display: block;
+  visibility: visible;
+  font-size: @font-size-small;
+  line-height: 1.4;
+  font-size:@tooltip-font-size;
+
+
+  &.in     {  }
+  &.top    { margin-top:  -3px; padding: 5px 0; }
+  &.right  { margin-left:  3px; padding: 0 5px; }
+  &.bottom { margin-top:   3px; padding: 5px 0; }
+  &.left   { margin-left: -3px; padding: 0 5px; }
 }
 
-
-/* Triangle
- ========================================================================== */
-
-/*
- * 1. Dashed is less antialised than solid
- */
-
-.tooltip:after {
-	content: "";
-	display: block;
-	position: absolute;
-	width: 0; 
-	height: 0; 
-	border: @tooltip-triangle-size dashed @tooltip-background; /* 1 */
+// Wrapper for the tooltip content
+.tooltip-inner {
+  max-width: @tooltip-max-width;
+  padding: 3px 8px;
+  color: @tooltip-color;
+  text-align: @tooltip-text-align;
+  text-decoration: none;
+  background-color: @tooltip-bg;
+  border-radius: @border-radius-base;
 }
 
-
-/* Direction modifiers
- ========================================================================== */
-
-/*
- * Top
- */
-
-.tooltip-top:after,
-.tooltip-top-left:after,
-.tooltip-top-right:after {
-	bottom: -@tooltip-triangle-size;
-	border-top-style: solid;
-	border-bottom: none;
-	border-left-color: transparent;
-	border-right-color: transparent;
-	border-top-color: @tooltip-background;
+// Arrows
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
 }
-
-/*
- * Bottom
- */
-
-.tooltip-bottom:after,
-.tooltip-bottom-left:after,
-.tooltip-bottom-right:after {
-	top: -@tooltip-triangle-size;
-	border-bottom-style: solid; 
-	border-top: none; 
-	border-left-color: transparent; 
-	border-right-color: transparent; 
-	border-bottom-color: @tooltip-background;
+.tooltip {
+  &.top .tooltip-arrow {
+    bottom: 0;
+    left: 50%;
+    margin-left: -@tooltip-arrow-width;
+    border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
+    border-top-color: @tooltip-arrow-color;
+  }
+  &.top-left .tooltip-arrow {
+    bottom: 0;
+    left: 5px;
+    border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
+    border-top-color: @tooltip-arrow-color;
+  }
+  &.top-right .tooltip-arrow {
+    bottom: 0;
+    right: 5px;
+    border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
+    border-top-color: @tooltip-arrow-color;
+  }
+  &.right .tooltip-arrow {
+    top: 50%;
+    left: 0;
+    margin-top: -@tooltip-arrow-width;
+    border-width: @tooltip-arrow-width @tooltip-arrow-width @tooltip-arrow-width 0;
+    border-right-color: @tooltip-arrow-color;
+  }
+  &.left .tooltip-arrow {
+    top: 50%;
+    right: 0;
+    margin-top: -@tooltip-arrow-width;
+    border-width: @tooltip-arrow-width 0 @tooltip-arrow-width @tooltip-arrow-width;
+    border-left-color: @tooltip-arrow-color;
+  }
+  &.bottom .tooltip-arrow {
+    top: 0;
+    left: 50%;
+    margin-left: -@tooltip-arrow-width;
+    border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
+    border-bottom-color: @tooltip-arrow-color;
+  }
+  &.bottom-left .tooltip-arrow {
+    top: 0;
+    left: 5px;
+    border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
+    border-bottom-color: @tooltip-arrow-color;
+  }
+  &.bottom-right .tooltip-arrow {
+    top: 0;
+    right: 5px;
+    border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
+    border-bottom-color: @tooltip-arrow-color;
+  }
 }
-
-/*
- * Top/Bottom center
- */
-
-.tooltip-top:after,
-.tooltip-bottom:after { 
-	left: 50%; 
-	margin-left: -@tooltip-triangle-size; 
-}
-
-/*
- * Top/Bottom left
- */
-
-.tooltip-top-left:after,
-.tooltip-bottom-left:after { left: 10px; }
-
-/*
- * Top/Bottom right
- */
-
-.tooltip-top-right:after,
-.tooltip-bottom-right:after { right: 10px; }
-
-/*
- * Left
- */
-
-.tooltip-left:after {
-	right: -@tooltip-triangle-size;
-	top: 50%;
-	margin-top: -@tooltip-triangle-size;
-	border-left-style: solid;
-	border-right: none;
-	border-top-color: transparent;
-	border-bottom-color: transparent;
-	border-left-color: @tooltip-background;
-}
-
-/*
- * Right
- */
-
-.tooltip-right:after {
-	left: -@tooltip-triangle-size;
-	top: 50%;
-	margin-top: -@tooltip-triangle-size;
-	border-right-style: solid;
-	border-left: none;
-	border-top-color: transparent;
-	border-bottom-color: transparent;
-	border-right-color: @tooltip-background;
-}
-
-
-/* Hooks
- ========================================================================== */
-
-.hook-tooltip() {}
