@@ -1,0 +1,139 @@
+
+.nav-tabs {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border-bottom: 1px solid @tab-border;
+}
+
+/*
+ * Micro clearfix on the deepest container
+ */
+
+.nav-tabs:before,
+.nav-tabs:after {
+	content: " ";
+	display: table;
+}
+
+.nav-tabs:after { clear: both; }
+
+/*
+ * Items
+ * 1. Create position context for dropdowns
+ */
+
+.nav-tabs > li {
+	position: relative; /* 1 */
+	margin-bottom: -1px;
+	float: left;
+}
+
+.nav-tabs > li > a {
+	display: block;
+	padding: @tab-padding-vertical @tab-padding-horizontal;
+	border: 1px solid transparent;
+	border-bottom-width: 0;
+	color: @tab-color;
+	text-decoration: none;
+	border:solid 1px #ddd;
+	background:@tab-background-color;
+	.hook-tab;
+}
+
+.nav-tabs > li:nth-child(n+2) > a { margin-left: 5px; }
+
+/*
+ * Hover
+ * 1. Apply hover style also to focus state
+ * 2. Also apply if dropdown is opened
+ * 3. Remove default focus style
+ */
+
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:focus, /* 1 */
+.nav-tabs > li.uk-open > a { /* 2 */
+	border-color: @tab-hover-border;
+	background: @tab-hover-background;
+	color: @tab-hover-color;
+	outline: none; /* 3 */
+	.hook-tab-hover;
+}
+
+.nav-tabs > li:not(.uk-active) > a:hover,
+.nav-tabs > li:not(.uk-active) > a:focus,
+.nav-tabs > li.uk-open:not(.uk-active) > a {
+	margin-bottom: 1px;
+	padding-bottom: @tab-padding-vertical - 1;
+}
+
+/* Active */
+.nav-tabs > li.active > a {
+	border-color: @tab-active-border;
+	border-bottom-color: transparent;
+	background: @tab-active-background;
+	color: @tab-active-color;
+	.hook-tab-active;
+}
+
+/* Disabled */
+.nav-tabs > li.disabled > a {
+	color: @tab-disabled-color;
+	cursor: auto;
+	.hook-tab-disabled;
+}
+
+.nav-tabs > li.uk-disabled > a:hover,
+.nav-tabs > li.uk-disabled > a:focus,
+.nav-tabs > li.uk-disabled.uk-active > a {
+	background: none;
+	border-color: transparent;
+}
+
+
+
+
+.clearfix() {
+	&:before,
+	&:after {
+		content: " "; /* 1 */
+		display: table; /* 2 */
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+// Tabbable tabs
+// -------------------------
+
+// Clear any floats
+.tabbable {
+	.clearfix();
+}
+
+// Show/hide tabbable areas
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+	display: none;
+}
+.tab-content,
+.pill-content {
+> .active {
+	  display: block;
+  }
+	}
+
+
+.tab-content
+{border:solid 1px #ddd;
+	border-top:0;
+padding:20px;
+	background: @tab-content-background}
+/* Hooks
+ ========================================================================== */
+
+.hook-tab() {}
+.hook-tab-hover() {}
+.hook-tab-active() {}
+.hook-tab-disabled() {}

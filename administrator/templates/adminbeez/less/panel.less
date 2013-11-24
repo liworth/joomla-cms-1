@@ -1,0 +1,189 @@
+/*
+ * Name:			Panel
+ * Description:		Defines styles for reusable content areas
+ *
+ * Component:		`panel`
+ *
+ * Sub-objects:		`panel-title`
+ *					`panel-badge`
+ *
+ * Modifiers:		`panel-box`
+ *					`panel-box-primary`
+ *					`panel-box-secondary`
+ *					`panel-header`
+ *					`panel-space`
+ *					`panel-divider`
+ *
+ * Uses:			Nav: `nav-side`
+ *
+ * Used by:			Dropdown
+ *					Off-canvas
+ *					Grid
+ *
+ ========================================================================== */
+
+
+/* Component
+ ========================================================================== */
+
+/*
+ * Create position context for badges
+ */
+
+.panel { position: relative; }
+
+
+/*
+ * Micro clearfix to make panels more robust
+ */
+
+.panel:before,
+.panel:after {
+	content: " ";
+	display: table;
+}
+
+.panel:after { clear: both; }
+
+/*
+ * Remove margin from the last-child if not `windget-title`
+ */
+
+.panel > :not(.panel-title):last-child { margin-bottom: 0; }
+
+
+/* Sub-object: `panel-title`
+ ========================================================================== */
+
+.panel-title {
+	margin-bottom: @panel-title-margin-bottom;
+	font-size: @panel-title-font-size;
+	line-height: @panel-title-line-height;
+	font-weight: @panel-title-font-weight;
+	text-transform: @panel-text-transform;
+	color: @panel-title-color;
+	.hook-panel-title;
+}
+
+
+/* Sub-object: `panel-badge`
+ ========================================================================== */
+
+.panel-badge {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+	.hook-panel-badge;
+}
+
+/*
+ * Remove margin from adjacent element
+ */
+
+.panel-badge + * { margin-top: 0; }
+
+
+/* Modifier: `panel-box`
+ ========================================================================== */
+
+.panel-box {
+	padding: @panel-box-padding;
+	background: @panel-box-background;
+	color: @panel-box-color;
+	.hook-panel-box;
+}
+
+.panel-box .panel-title { color: @panel-box-title-color; }
+
+.panel-box .panel-badge {
+	top: @panel-box-badge-top;
+	right: @panel-box-badge-right;
+}
+
+/*
+ * Nav in panel
+ */
+
+.panel-box > .nav-side { margin: 0 -@panel-box-padding; }
+
+/*
+ * Sub-modifier: `panel-box-primary`
+ */
+
+.panel-box-primary {
+	background-color: @panel-box-primary-background;
+	color: @panel-box-primary-color;
+	.hook-panel-box-primary;
+}
+
+.panel-box-primary .panel-title { color: @panel-box-primary-title-color; }
+
+/*
+ * Sub-modifier: `panel-box-secondary`
+ */
+
+.panel-box-secondary {
+	background-color: @panel-box-secondary-background;
+	color: @panel-box-secondary-color;
+	.hook-panel-box-secondary;
+}
+
+.panel-box-secondary .panel-title { color: @panel-box-secondary-title-color; }
+
+
+/* Modifier: `panel-header`
+ ========================================================================== */
+
+.panel-header .panel-title {
+	padding-bottom: @panel-header-title-padding;
+	border-bottom: 1px solid @panel-header-title-border;
+	color: @panel-header-title-color;
+	.hook-panel-header;
+}
+
+
+/* Modifier: `panel-space`
+ ========================================================================== */
+
+.panel-space { padding: @panel-space-padding; }
+
+.panel-space .panel-badge {
+	top: @panel-space-padding;
+	right: @panel-space-padding;
+}
+
+
+/* Modifier: `panel-divider`
+ ========================================================================== */
+
+.panel + .panel-divider { margin-top: (@panel-divider-gutter * 2) !important; }
+
+.panel + .panel-divider:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: -(@panel-divider-gutter);
+	left: 0;
+	right: 0;
+	border-top: 1px solid @panel-divider-border;
+}
+
+/* Only large screens */
+@media (min-width: @breakpoint-xlarge) {
+
+	.panel + .panel-divider { margin-top: (@panel-divider-large-gutter * 2) !important; }
+	.panel + .panel-divider:before { top: -(@panel-divider-large-gutter); }
+
+}
+
+
+/* Hooks
+ ========================================================================== */
+
+.hook-panel-title() {}
+.hook-panel-badge() {}
+.hook-panel-box() {}
+.hook-panel-box-primary() {}
+.hook-panel-box-secondary() {}
+.hook-panel-header() {}

@@ -1,0 +1,103 @@
+.navbar
+{background:@navbar-background;
+text-align:@navbar-text-align;}
+
+.moduletable_menu
+{padding:@nav-sidemenu-padding-vertical @nav-sidemenu-padding-horizontal;
+        background:@nav-sidemenu-background;
+        border-radius:@nav-sidemenu-border-radius;
+        margin-bottom:@nav-sidemenu-margin-bottom}
+.nav,
+.nav ul {
+        margin: 0 auto;
+        padding: 0;
+        list-style: none;
+}
+
+.moduletable_menu h3
+{font-weight:@nav-sidemenu-heading-font-weight;
+border:@nav-sidemenu-heading-border;
+background:@nav-sidemenu-heading-background;
+padding:@nav-sidemenu-heading-padding}
+
+.nav li > a {
+        display: block;
+        text-decoration: none;
+
+}
+
+.nav > li > a { padding: @nav-padding-vertical @nav-padding-horizontal; }
+
+
+
+.nav ul { padding-left: 15px; }
+.nav ul  {margin:10px }
+
+ul.nav li ul li > a{ padding: @nav-nested-padding-vertical @nav-nested-padding-horizontal;
+          color:@nav-nested-color;
+          font-size:@nav-nested-font-size;
+          border-bottom:@nav-nested-border; }
+
+
+.nav li > a > div {
+        font-size: @nav-subtitle-font-size;
+        line-height: @nav-subtitle-line-height;
+}
+
+.nav.horizontal li > a {
+        display: block;
+        text-decoration: none;
+        color: @navbar-link-color;
+
+
+}
+
+.nav.horizontal li.active > a {
+        display: block;
+        text-decoration: none;
+        color: @navbar-link-color-active;
+        background:@navbar-link-color-background;
+
+
+}
+
+
+.nav > li.active a, .nav > li.active ul li.active a, .nav > li.active ul li.active ul li.active a {font-weight:bold; color:@global-link-color}
+.nav > li.active ul li a, .nav > li.active ul li.active ul li a ,.nav > li.active ul li.active ul li.active  ul li a {font-weight:normal; color:@nav-nested-color}
+
+
+.nav.horizontal  li > a:hover,
+.nav.horizontal  li > a:active,
+.nav.horizontal  li > a:focus,
+.nav li > a:hover,
+.nav  li > a:active,
+.nav  li > a:focus,
+.nav li li a:hover,
+.nav  li li a:active,
+.nav  li li a:focus{
+        background: @navbar-link-hover-backgroundcolor;
+        color: @navbar-link-hover-color !important;
+        text-decoration: @navbar-link-hover-textdecoration;
+}
+
+
+.clearfix() {
+        &:before,
+        &:after {
+                content: " "; /* 1 */
+                display: table; /* 2 */
+        }
+        &:after {
+                clear: both;
+        }
+}
+.nav.horizontal > li {float:@navbar-float}
+
+ul.horizontal
+{.clearfix()}
+
+
+
+
+
+

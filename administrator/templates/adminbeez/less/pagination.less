@@ -1,0 +1,162 @@
+/*
+ * Name:			Pagination
+ * Description:		Defines styles for a navigation between pages
+ *
+ * Component:		`pagination`
+ *
+ * Sub-objects:		`pagination-previous`
+ *					`pagination-next`
+ *
+ * States:		 	`active`
+ *					`disabled`
+ *
+ * Modifiers:		`pagination-left`
+ *					`pagination-right`
+ *
+ ========================================================================== */
+
+
+/* Component
+ ========================================================================== */
+
+/*
+ * 1. Remove default list style
+ * 2. Center pagination by default
+ * 3. Remove whitespace between child elements when using `inline-block`
+ */
+
+.pagination {
+	/* 1 */
+	padding: 0;
+    font-size:@pagination-font-size;
+	list-style: none;
+	/* 2 */
+	text-align: center;
+	/* 3 */
+
+}
+
+/*
+ * Micro clearfix
+ * Needed if `pagination-previous` or `pagination-next` sub-objects are used
+ */
+
+.pagination:before,
+.pagination:after {
+	content: " ";
+	display: table;
+}
+
+.pagination:after { clear: both; }
+
+
+/* Items
+ ========================================================================== */
+
+/*
+ * 1. Reset whitespace hack
+ */
+
+.pagination ul  > li {
+	display: inline-block;
+	letter-spacing: normal; /* 1 */
+	border: @pagination-part-border;
+	margin:@pagination-part-margin;
+	border-radius:@pagination-part-border-radius;
+}
+
+.pagination > li:nth-child(n+2) { margin-left: 5px; }
+
+/*
+ * 1. Makes pagination more robust against different box-sizing use
+ * 2. Reset text-align to center if alignment modifier is used
+ */
+
+.pagination ul > li > a,
+.pagination ul > li > span {
+	-moz-box-sizing: content-box;
+	box-sizing: content-box; /* 1 */
+	display: inline-block;
+
+	padding: @pagination-part-padding;
+	line-height: @pagination-line-height;
+	text-decoration: none;
+	text-align: center; /* 2 */
+	.hook-pagination-item;
+}
+
+/*
+ * Links
+ */
+
+.pagination  ul  > li > a {
+	background: @pagination-background;
+	color: @pagination-color;
+	.hook-pagination-link;
+}
+
+/*
+ * Hover
+ * 1. Apply hover style also to focus state
+ * 2. Remove default focus style
+ */
+
+.pagination ul > li > a:hover,
+.pagination ul  > li > a:focus { /* 1 */
+	background-color: @pagination-hover-background;
+	color: @pagination-hover-color;
+	outline: none; /* 2 */
+	.hook-pagination-link-hover;
+}
+
+/* OnClick */
+.pagination ul > li > a:active {
+	background-color: @pagination-onclick-background;
+	color: @pagination-onclick-color;
+	.hook-pagination-link-active;
+}
+
+/*
+ * Active
+ */
+
+.pagination ul > .pagenav > span {
+	background: @pagination-active-background;
+	color: @pagination-active-color;
+	.hook-pagination-active;
+}
+
+/*
+ * Disabled
+ */
+
+.pagination ul > li > span {
+	background-color: @pagination-disabled-background;
+	color: @pagination-disabled-color;
+	.hook-pagination-disabled;
+}
+
+
+/* Previous and next navigation
+ ========================================================================== */
+
+.pagination-prev { float: left; }
+.pagination-next { float: right; }
+
+
+/* Alignment modifiers
+ ========================================================================== */
+
+.pagination-start { text-align: left; }
+.pagination-end { text-align: right; }
+
+
+/* Hooks
+ ========================================================================== */
+
+.hook-pagination-item() {}
+.hook-pagination-link() {}
+.hook-pagination-link-hover() {}
+.hook-pagination-link-active() {}
+.hook-pagination-active() {}
+.hook-pagination-disabled() {}

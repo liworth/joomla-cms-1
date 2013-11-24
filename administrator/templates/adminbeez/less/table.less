@@ -1,0 +1,85 @@
+
+
+
+
+
+/* Block element behavior */
+table {
+
+	margin-bottom: @table-margin-vertical 0;
+	overflow-x:scroll;
+	width:100%
+
+}
+
+/*
+ * Add margin if adjacent element
+ */
+
+* + .table { margin-top: @table-margin-vertical; }
+
+table th,
+table td {
+	padding: @table-padding-vertical @table-padding-horizontal;
+
+
+}
+
+tr {border-bottom:@table-tr-border-bottom}
+
+/* Set alignment */
+table th { text-align: left;
+background:@table-th-background ; border:0;}
+
+table th
+{font-size:@table-th-font-size}
+table td { vertical-align: top; }
+
+table thead th { vertical-align: bottom; }
+
+/*
+ * Caption and footer
+ */
+
+table caption,
+table tfoot {
+	font-size: @table-caption-font-size;
+	font-style: italic;
+}
+
+table caption {
+	text-align: left;
+	color: @table-caption-color;
+}
+
+
+
+
+/* Sub-modifier: `uk-table-middel`
+ ========================================================================== */
+
+.table-middle,
+.table-middle td { vertical-align: middle !important; }
+
+
+/* Modifier: `uk-table-striped`
+ ========================================================================== */
+
+.table-striped tbody tr:nth-of-type(odd) td { background: @table-striped-background; }
+
+
+/* Modifier: `uk-table-condensed`
+ ========================================================================== */
+
+.table-condensed td { padding: @table-condensed-padding-vertical @table-condensed-padding-horizontal; }
+
+
+/* Modifier: `uk-table-hover`
+ ========================================================================== */
+
+.table-hover tbody tr:hover td { background: @table-hover-background; }
+
+
+/* Hooks
+ ========================================================================== */
+

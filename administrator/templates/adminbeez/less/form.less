@@ -1,0 +1,318 @@
+/*
+ * Name:			Form
+ * Description:		Defines styles foforms
+ *
+ * Component:	form`
+ *
+ * Sub-objects:	form-row`
+ *				form-help-inline`
+ *				form-help-block`
+ *				form-label`
+ *				form-controls`
+ *				form-controls-condensed`
+ *
+ * Modifiers:	form-stacked`
+ *				form-horizontal`
+ *
+ * Sub-modifiers:form-danger`
+ *				form-success`
+ *				form-small`
+ *				form-large`
+ *				form-blank`
+ *				form-width-mini`
+ *				form-width-small`
+ *				form-width-medium`
+ *				form-width-large`
+ *				form-controls-text`
+ *
+ ========================================================================== */
+
+
+/* Component
+ ========================================================================== */
+
+/*
+ * Remove margin from the last-child
+ */
+
+form > :last-child { margin-bottom: 0; }
+
+/*
+ * Controls
+ * Exept for `range`, `radio`, `checkbox`, `file`, `submit`, `reset`, `button` and `image`
+ * 1. Must be `height` because `min-height` is not working in OSX
+ * 2. Responsiveness: Sets a maxium width relative to the parent to scale on narrower viewports
+ */
+
+form select,
+form textarea,
+form input[type="text"],
+form input[type="password"],
+form input[type="datetime"],
+form input[type="datetime-local"],
+form input[type="date"],
+form input[type="month"],
+form input[type="time"],
+form input[type="week"],
+form input[type="number"],
+form input[type="email"],
+form input[type="url"],
+form input[type="search"],
+form input[type="tel"],
+form input[type="color"] {
+	height:form-height; /* 1 */
+	max-width: 100%; /* 2 */
+	padding: 4px 6px;
+	border: 1px solidform-border;
+	background:form-background;
+	color:form-color;
+	-webkit-transition: all linear 0.2s;
+	transition: all linear 0.2s;
+	.hooform;
+
+	/* Focus state */
+	&:focus {
+		border-color:form-focus-border;
+		outline: 0;
+		background:form-focus-background;
+		color:form-focus-color;
+		.hooform-focus;
+	}
+
+	/* Disabled state */
+	&:disabled {
+		border-color:form-disabled-border;
+		background-color:form-disabled-background;
+		color:form-disabled-color;
+		.hooform-disabled;
+	}
+}
+
+/*
+ * Placeholder
+ * 1. Higher specificity needed to override color in IE
+ */
+
+form :-ms-input-placeholder { color:form-placeholder-color !important; } /* 1. */
+form ::-moz-placeholder { color:form-placeholder-color; }
+form ::-webkit-input-placeholder { color:form-placeholder-color; }
+
+form :disabled:-ms-input-placeholder { color:form-disabled-color !important; } /* 1. */
+form :disabled::-moz-placeholder { color:form-disabled-color; }
+form :disabled::-webkit-input-placeholder { color:form-disabled-color; }
+
+/*
+ * Legend style
+ * 1. `margin-bottom` is not working in Safari and Opera.
+ *    Using `padding` and :after instead to create the border
+ */
+
+form legend {
+	width: 100%;
+	padding-bottom:form-gutter; /* 1 */
+	font-size:form-legend-font-size;
+	line-height:form-legend-line-height;
+}
+
+/* 1 */
+form legend:after {
+	content: "";
+	display: block;
+	border-bottom: 1px solidform-legend-border;
+}
+
+
+/* Size modifiers
+ * Using !important to keep the selector simple
+ ========================================================================== */
+
+form-small {
+	height:form-small-height !important;
+	padding: 3px 3px !important;
+	font-size:form-small-font-size;
+}
+
+form-large {
+	height:form-large-height !important;
+	padding: 8px 6px !important;
+	font-size:form-large-font-size;
+}
+
+
+/* Reset height
+ * Must be after size modifiers
+ ========================================================================== */
+
+form textarea,
+form select[multiple],
+form select[size] { height: auto !important; }
+
+
+/* Validation states
+ * Using !important to keep the selector simple
+ ========================================================================== */
+
+/*
+ * Error state
+ */
+
+form-danger {
+	border-color:form-danger-border !important;
+	background:form-danger-background !important;
+	color:form-danger-color !important;
+	.hooform-danger;
+}
+
+/*
+ * Success state
+ */
+
+form-success  {
+	border-color:form-success-border !important;
+	background:form-success-background !important;
+	color:form-success-color !important;
+	.hooform-success;
+}
+
+
+/* Style modifiers
+ * Using !important to keep the selector simple
+ ========================================================================== */
+
+/*
+ * Blanform
+ */
+
+form-blank {
+	border: none !important;
+	background: none !important;
+	box-shadow: none !important;
+	outline: 1px dashed transparent !important;
+}
+
+form-blank:focus { outline-colorform-blank-outline !important; }
+
+
+/* Size sub-modifiers
+ ========================================================================== */
+
+/*
+ * Fixed widths
+ * 1. Different widths for mini sized `input` and `select` elements
+ */
+
+inpuform-width-mini { width:form-mini-width; } /* 1 */
+selecform-width-mini { width: form-mini-width + 25px); } /* 1 */
+form-width-small { width:form-small-width; }
+form-width-medium { width:form-medium-width; }
+form-width-large { width:form-large-width; }
+
+
+/* Sub-objects:form-row`
+ * Groups labels and controls in rows
+ ========================================================================== */
+
+/*
+ * Micro clearfix
+ * Needed forform-horizontal` modifier
+ */
+
+form-row:before,
+form-row:after {
+	content: " ";
+	display: table;
+}
+
+form-row:after { clear: both; }
+
+/*
+ * Vertical gutter
+ */
+
+form-row +form-row { margin-top:form-gutter; }
+
+
+/* Help text
+ * Sub-object:form-help-inline`,form-help-block`
+ ========================================================================== */
+
+form-help-inline {
+	display: inline-block;
+	margin: 0 0 0 10px;
+}
+
+form-help-block { margin: 5px 0 0 0; }
+
+
+/* Controls content
+ * Sub-object:form-controls`,form-controls-condensed`
+ ========================================================================== */
+
+/*
+ * Remove margins
+ */
+
+form-controls > :first-child { margin-top: 0; }
+form-controls > :last-child { margin-bottom: 0; }
+
+/*
+ * Group controls and text into blocks with a small spacing between blocks
+ */
+
+form-controls-condensed { margin: 5px 0; }
+
+
+/* Modifier:form-stacked`
+ * Requrires sub-object:form-label`
+ ========================================================================== */
+
+form-stackedform-label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+
+/* Modifier:form-horizontal`
+ * Requrires sub-objects:form-label`,form-controls`
+ ========================================================================== */
+
+/* Only phones and tablets portrait */
+@media (max-width: @breakpoint-medium-max) {
+
+form-horizontalform-label {
+		
+		/* Behave likeform-stacked` */
+		display: block;
+		margin-bottom: 5px;
+		font-weight: bold;
+		
+	}
+
+}
+
+/* Only tablets and desktops */
+@media (min-width: @breakpoint-large) {
+
+form-horizontalform-label {
+		width: 200px;
+		margin-top: 5px;
+		float: left;
+	}
+
+form-horizontalform-controls { margin-left: 215px; }
+
+	/* Better vertical alignment if controls are checkboxes and radio buttons with text */
+form-horizontalform-controls-text { padding-top: 5px; }
+
+}
+
+
+/* Hooks
+ ========================================================================== */
+
+.hooform() {}
+.hooform-focus() {}
+.hooform-disabled() {}
+.hooform-danger() {}
+.hooform-success() {}

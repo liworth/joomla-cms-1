@@ -1,0 +1,18 @@
+
+
+
+.clearfix() {
+	&:before,
+	&:after {
+		content: " "; /* 1 */
+		display: table; /* 2 */
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+.make-row() {
+// Then clear the floated columns
+	.clearfix();
+}

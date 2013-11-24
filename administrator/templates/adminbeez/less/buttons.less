@@ -1,0 +1,169 @@
+
+// Alternate buttons
+// --------------------------------------------------
+
+.btn-default, .btn {
+
+	color: @btn-default-color;
+	background-color: @btn-default-bg;
+	border: @btn-default-border;
+	border-radius: @btn-border-radius-large;
+	padding: @padding-btn-large-vertical  @padding-btn-large-horizontal;
+
+}
+
+
+.btn-default:hover, .btn:hover {
+
+	color: @btn-default-hover-color;
+	background-color: @btn-default-hover-bg;
+
+
+}
+
+.btn-micro {padding: @padding-micro-vertical @padding-micro-horizontal;
+border-radius:@btn-border-radius-small;
+font-size:@btn-micro-fontsize;
+line-height:@line-height-mirco;
+background: @btn-micro-background;
+border:@btn-micro-border;
+text-align:center;
+color:@btn-micro-color;}
+.btn-primary {
+
+
+	color: @btn-primary-color;
+	background-color: @btn-primary-bg;
+	border: @btn-primary-border;
+	border-radius: @btn-border-radius-large;
+
+
+
+}
+// Warning appears as orange
+.btn-warning {
+
+	color: @btn-warning-color;
+	background-color: @btn-warning-bg;
+	border: @btn-warning-border;
+	border-radius: @btn-border-radius-large;
+
+}
+// Danger and error appear as red
+.btn-danger {
+	color: @btn-danger-color;
+	background-color: @btn-danger-bg;
+	border-color: @btn-danger-border;
+	border-radius: @btn-border-radius-large;
+
+}
+// Success appears as green
+.btn-success {
+	color: @btn-success-color;
+	background-color: @btn-success-bg;
+	border: @btn-success-border;
+	border-radius: @btn-border-radius-large;
+
+}
+// Info appears as blue-green
+.btn-info {
+	color: @btn-info-color;
+	background-color: @btn-info-bg;
+	border: @btn-info-border;
+	border-radius: @btn-border-radius-large;
+
+}
+
+
+// Link buttons
+// -------------------------
+
+// Make a button look and behave like a link
+.btn-link {
+  color: @global-link-color;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+
+  &,
+  &:active,
+  &[disabled],
+  fieldset[disabled] & {
+    background-color: transparent;
+
+  }
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: transparent;
+  }
+  &:hover,
+  &:focus {
+    color: @global-link-hover-color;
+    text-decoration: underline;
+    background-color: transparent;
+  }
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus {
+      color: @btn-link-disabled-color;
+      text-decoration: none;
+    }
+  }
+}
+
+
+// Button Sizes
+// --------------------------------------------------
+
+.btn-lg {
+
+//	padding:@padding-large-vertical @padding-large-horizontal;
+	font-size:@font-size-large;
+	line-height: @line-height-large;
+	border-radius:@btn-border-radius-large;
+
+
+}
+.btn-sm,
+.btn-xs, .btn-small  {
+  // line-height: ensure proper height of button next to small input
+
+
+//	padding:@padding-small-vertical @padding-small-horizontal;
+	font-size:@font-size-small;
+	line-height: @line-height-small;
+	border-radius:@btn-border-radius-small;
+	padding: @padding-small-vertical  @padding-small-horizontal;
+
+}
+.btn-xs {
+  padding: 1px 5px;
+}
+
+
+// Block button
+// --------------------------------------------------
+
+.btn-block {
+  display: block;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+// Vertically space out multiple block buttons
+.btn-block + .btn-block {
+  margin-top: 5px;
+}
+
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.btn-block {
+    width: 100%;
+  }
+}

@@ -1,0 +1,505 @@
+/*
+ * Component:		Base
+ * Description:		Sets default values for HTML elements
+ *
+ * Component:		`uk-h1`, `uk-h2`, `uk-h3`, `uk-h4`, `uk-h5`, `uk-h6`
+ *					`uk-img-preserve`
+ *
+ ========================================================================== */
+
+
+/* Body
+ ========================================================================== */
+
+/*
+ * `font-size` is set in `html` element to support the `rem` unit for font-sizes
+ */
+
+html { font-size: @base-body-font-size; }
+
+body {
+	background: @base-body-background;
+	font-family:  @base-body-font-family;
+	font-weight:  @base-body-font-weight;
+	line-height: @base-body-line-height;
+	color: @base-body-color;
+
+}
+
+/* Only phones */
+@media (max-width:@screen-small) {
+
+	/*
+	 * Break strings if their length exceeds the width of their container
+	 */
+
+	body {
+		word-wrap: break-word;
+		-webkit-hyphens: auto;
+		-ms-hyphens: auto;
+		-moz-hyphens: auto;
+		hyphens: auto;
+	}
+
+}
+
+
+/* Text-level semantics
+ ========================================================================== */
+
+/*
+ * Links
+ */
+.element-invisible
+{position:absolute; left:-4000px; top:-5000px; height:0; display:inline}
+
+
+a {
+	color: @base-link-color;
+	text-decoration: @global-link-textdecoration
+}
+
+a:hover {
+	color: @base-link-hover-color;
+}
+
+a:hover, a:active, a:focus {
+	background: @global-link-hover-backgroundcolor;
+	color: @global-link-hover-color;
+	text-decoration: @global-link-hover-textdecoration
+}
+/*
+ * Emphasize
+ */
+
+em { color: @base-em-color; }
+
+/*
+ * Insert
+ */
+
+ins {
+	background: @base-ins-background;
+	color: @base-ins-color;
+	text-decoration: none;
+}
+
+/*
+ * Mark
+ * Note: Addresses styling not present in IE 8/9.
+ */
+
+mark {
+	background: @base-mark-background;
+	color: @base-mark-color;
+}
+
+/*
+ * Selection highlight
+ */
+
+::-moz-selection {
+	background: @base-selection-background;
+	color: @base-selection-color;
+	text-shadow: none;
+}
+
+::selection {
+	background: @base-selection-background;
+	color: @base-selection-color;
+	text-shadow: none;
+}
+
+/*
+ * Abbreviation and definition
+ */
+
+abbr[title],
+dfn[title] { cursor: help; }
+
+dfn[title] {
+	border-bottom: 1px dotted;
+	font-style: normal;
+}
+
+
+/* Embedded content
+ ========================================================================== */
+
+/*
+ * 1. Corrects max-width behavior (2.) if padding and border are used
+ * 2. Responsiveness: Sets a maxium width relative to the parent and auto scales the height
+ * 3. Remove the gap between images and the bottom of their containers
+ */
+
+img {
+	-moz-box-sizing: border-box; 
+	box-sizing: border-box; /* 1 */
+	max-width: 100%; /* 2 */
+	height: auto; /* 2 */
+	vertical-align: middle; /* 3 */
+}
+
+/*
+ * Preserve original image dimensions
+ * 1. Fix Google maps automatically via URL detection
+ */
+
+
+img[src*="maps.gstatic.com"], /* 1 */
+img[src*="googleapis.com"] { max-width: none; }
+
+
+/* Spacing for block elements
+ ========================================================================== */
+
+p,
+hr,
+ul,
+ol,
+dl,
+blockquote,
+pre,
+address,
+fieldset,
+figure { margin: 0 0 @base-margin-vertical 0; }
+
+/*
+ * Don't worry about the universal selector.
+ * There is no mentionable performance impact.
+ */
+
+* + p,
+* + hr,
+* + ul,
+* + ol,
+* + dl,
+* + blockquote,
+* + pre,
+* + address,
+* + fieldset,
+* + figure { margin-top: @base-margin-vertical; }
+
+/* Headings
+ ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0 0 @base-margin-vertical 0;
+	font-family:  @base-heading-font-family;
+	font-weight: @base-heading-font-weight;
+	color: @base-heading-color;
+	text-transform: @base-heading-text-transform;
+}
+
+/*
+ * Don't worry about the universal selector.
+ * There is no mentionable performance impact.
+ */
+
+* + h1,
+* + h2,
+* + h3,
+* + h4,
+* + h5,
+* + h6 { margin-top: @base-heading-margin-top; }
+
+/*
+ * TODO: Use `:extend` to move heading classes to the utility component
+ */
+
+h1, .jh1 {
+	font-size: @base-h1-font-size;
+	line-height: @base-h1-line-height;
+	color:@base-h1-font-color;
+}
+
+h2, .jh2 {
+	font-size: @base-h2-font-size;
+	line-height: @base-h2-line-height;
+}
+
+h3, .jh3 {
+	font-size: @base-h3-font-size;
+	line-height: @base-h3-line-height;
+	font-weight:bold
+}
+
+h4, .jh4 {
+	font-size: @base-h4-font-size;
+	line-height: @base-h4-line-height;
+}
+
+h5, .jh5 {
+	font-size: @base-h5-font-size;
+	line-height: @base-h5-line-height;
+}
+
+h6, .jh6 {
+	font-size: @base-h6-font-size;
+	line-height: @base-h6-line-height;
+}
+
+
+/* Lists
+ ========================================================================== */
+
+/*
+ * Ordered and unordered lists
+ */
+
+ul,
+ol { padding-left: 30px }
+
+/* Reset margin for nested lists */
+ul > li > ul,
+ul > li > ol,
+ol > li > ol,
+ol > li > ul { margin: 0; }
+
+/*
+ * Description lists
+ */
+
+dt { font-weight: bold; }
+dd { margin-left: 0; }
+
+
+/* Horizontal rule
+ ========================================================================== */
+
+hr {
+	display: block;
+	padding: 0;
+	border: 0;
+	border-top: 1px solid @base-hr-border;
+}
+
+
+/* Address
+ ========================================================================== */
+
+address { font-style: normal; }
+
+
+/* Quotes
+ ========================================================================== */
+
+q,
+blockquote { font-style: italic; }
+	
+blockquote {
+	padding-left: 15px;
+	border-left: 5px solid @base-blockquote-border;
+	font-size: @base-blockquote-font-size;
+	line-height: @base-blockquote-line-height;
+}
+
+/* Small print for identifying the source */
+blockquote small {
+	display: block;
+	color: @base-blockquote-small-color;
+	font-style: normal;
+}
+
+/* Smaller margin if `small` follows */
+blockquote p:last-of-type { margin-bottom: 5px; }
+
+
+/* Code and preformatted text
+ ========================================================================== */
+
+code {
+	color: @base-code-color;
+	font-size: @base-code-font-size;
+	white-space: nowrap;
+
+}
+
+/* Reset code elements if parent of pre elements */
+pre code {
+	color: inherit;
+	white-space: pre-wrap;
+
+} 
+
+pre {
+	padding: 10px;
+	background: @base-pre-background;
+	color: @base-pre-color;
+	font-size: @base-pre-font-size;
+	line-height: @base-pre-line-height;
+	-moz-tab-size: 4;
+	tab-size: 4;
+
+}
+
+
+small, .small
+{font-size:@text-small-font-size;
+line-height:@text-small-line-height;
+}
+
+/* Forms
+ ========================================================================== */
+
+/*
+ * Vertical alignment
+ * Exclude `radio` and `checkbox` elements because the default `baseline` value aligns better with text
+ */
+
+button,
+input:not([type="radio"]):not([type="checkbox"]),
+select { vertical-align: middle; }
+
+
+/* Iframe
+ ========================================================================== */
+
+iframe { border: 0; }
+
+
+/* Fix viewport for IE10 snap mode
+ * http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
+ ========================================================================== */
+
+@-ms-viewport {
+	width: device-width;
+}
+
+
+
+
+/* nicht vergessen
+ ========================================================================== */
+
+
+
+
+.custom {
+	background:@mod_custom-background;
+	border: @mod_custom-border;
+	border-radius: @mod_custom-border-radius;
+	padding: @mod_custom-padding;
+}
+h1#logo {color:@base-heading-h1-header-color;
+	margin:@base-heading-h1-header-margin;
+	line-height:@base-heading-h1-header-line-height}
+h1#logo span
+{display:block; font-size:0.8em}
+
+ul.actions {
+	border-bottom: 1px solid #DDDDDD;
+	color: #EEEEEE;
+	list-style-type: none;
+	margin: 0;
+	padding: 0 !important;
+	text-align: right;
+}
+
+
+
+ul.actions li, .article-info {
+	display: inline;
+	font-size: 0.8em;
+	margin: 0;
+	padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+.dropdown {
+	position: relative;
+}
+
+
+
+
+.dropdown-menu {
+	position: absolute;
+	top: 70px;
+	left: 0;
+	z-index:10;
+	display: none; // none by default, but block on "open" of the menu
+	float: left;
+	min-width: 160px;
+	padding: 10px !important;
+	margin: 2px 0 0  !important; // override default ul
+	list-style: none;
+	border:solid 1px #ddd; background:#eee; border-radius:4px
+}
+
+
+
+.dropdown-menu > li > a {
+	display: block;
+	padding: 5px 20px;
+	clear: both;
+	font-weight: normal;
+	line-height:1em;
+
+	white-space: nowrap; // prevent links from randomly breaking onto new lines
+}
+
+
+
+
+.dropdown-menu > .disabled > a
+{
+
+}
+
+// Nuke hover/focus effects
+.dropdown-menu > .disabled > a  {
+	text-decoration: none;
+	background-color: transparent;
+	background-image: none; // Remove CSS gradient
+
+
+
+}
+
+
+.open
+.dropdown-menu {
+	display: block;
+}
+
+
+
+
+.dropdown-backdrop {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+
+}
+
+
+.pull-right > .dropdown-menu {
+	right: 0;
+	left: auto;
+}
+
+
+.dropdown-menu {
+	top: auto;
+
+	margin-bottom: 1px;
+}
+
+.pull-right {
+	float: right !important;
+}
+.pull-left {
+	float: left !important;
+}
