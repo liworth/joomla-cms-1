@@ -119,7 +119,7 @@ $stickyToolbar = $this->params->get('stickyToolbar', '1');
 		#status div {margin-left:5px}
 		#sidebar {padding:10px;margin-right:20px}
 		.filter-select h4 {font-size:1em;font-weight:bold}
-	
+
 		.chzn-container-single .chzn-single
 		{border-radius:0; box-shadow:none; }
 		#j-sidebar-container
