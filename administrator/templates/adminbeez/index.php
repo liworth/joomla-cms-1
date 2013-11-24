@@ -119,8 +119,7 @@ $stickyToolbar = $this->params->get('stickyToolbar', '1');
 		#status div {margin-left:5px}
 		#sidebar {padding:10px;margin-right:20px}
 		.filter-select h4 {font-size:1em;font-weight:bold}
-		.chzn-container-single .chzn-single span
-		{color:#0077DD}
+	
 		.chzn-container-single .chzn-single
 		{border-radius:0; box-shadow:none; }
 		#j-sidebar-container
@@ -146,6 +145,7 @@ $stickyToolbar = $this->params->get('stickyToolbar', '1');
 		#filter_search {background:#ebf7fd; }
 		#filter-bar .btn {border:0; border-radius:0}
 		#filter-bar .btn-group.pull-left {margin:0}
+
 
 
 	</style>
